@@ -1,9 +1,9 @@
 /*
         RBE 2001 A14
-        HW3 Solution
+        HW6 Solution
         
     Author: Christopher Bove
-    Date Finished: 9/19/2014
+    Date Finished: 10/6/2014
     
     Description:
       This program displays a clock using the Liquid Crystal Display library based on the
@@ -28,28 +28,32 @@
 #include <TimerOne.h>
 
 // define pin configs
-#define switchPin    2
-#define LCD_REGSEL  12
-#define LCD_EN      11
+#define periodSelectPin  3
+#define inputPin     2
+#define LCD_REGSEL   12
+#define LCD_EN       11
 #define LCD_DATA4    10
 #define LCD_DATA5    9
 #define LCD_DATA6    8
 #define LCD_DATA7    7
-#define interruptNum 0
-// call this a second
-#define secondInMicros 1000000
+#define freqInt      0
+#define selectInt    1
+
+// this is 100ms in microseconds
+#define timerTime 100000
+// this is for defining period in ms
+#define SHORT_PERIOD  100
+#define LONG_PERIOD   500
 
 // instantiate liquid crystal object using specified pins
 LiquidCrystal lcd(LCD_REGSEL, LCD_EN, LCD_DATA4, LCD_DATA5, LCD_DATA6, LCD_DATA7);
 
 // create variables used by the interrupts
-volatile int resetTime = LOW;
-volatile int queuedSeconds = 0;
-
-// time data
-int currentHours = 0;
-int currentMinutes = 0;
-int currentSeconds = 0;
+volatile int periodState = SHORT_PERIOD;
+volatile bool isPeriodChanged = true;
+volatile long unsigned int queuedFreqCount = 0;
+volatile unsigned int timeCount = 0;
+volatile int subCount = 0;
 
 // --------------------- SETUP ----------------------------
 void setup() {
@@ -57,91 +61,114 @@ void setup() {
   lcd.begin(16, 2);
   
   // configure switch
-  pinMode(switchPin, INPUT_PULLUP);
-  attachInterrupt(interruptNum, buttonISR, FALLING);
+  pinMode(periodSelectPin, INPUT_PULLUP);
+  attachInterrupt(selectInt, selectPeriodISR, CHANGE);
   
-  Timer1.initialize(secondInMicros); // timer for 1 second
-  Timer1.attachInterrupt(oneSecondISR);
+  // configure input
+  pinMode(inputPin, INPUT);
+  attachInterrupt(freqInt, freqISR, RISING);
+  
+  // initialize period to start
+  selectPeriodISR();
+  
+  // configure timer
+  Timer1.initialize(timerTime); // timer for 100msecond
+  Timer1.attachInterrupt(timerISR);
 }
 
-// =================== SUPPORTING FUNCTIONS =====================
+// =================== INTERRUPT SERVICE ROUTINES =====================
 
-// ISR for reset button press, flags reset for high
-void buttonISR() {
-  resetTime = HIGH;
+// ISR for frequency inputs, increases queued frquencies
+void freqISR() {
+  queuedFreqCount ++;
 }
 
-// service routine for the 1 second timer, adds a second to queue
-void oneSecondISR() {
-  queuedSeconds++;
-}
-
-// stuffs the time data into a string and refreshes the display with the time
-void drawDisplay() {
-  lcd.setCursor(0,0);
-  char tempString[8];
-  sprintf(tempString, "%02d:%02d:%02d", currentHours, currentMinutes, currentSeconds);
-  lcd.print(tempString);
-}
-
-// adds seconds onto the current time data
-// Assumption: it never gets passed more than 59 seconds. i.e. it only adds 1 minute tops
-// NOTE: this functionality can be expanded if loop() ever gets really latent, but 
-//   for now, it works just fine!
-void addSeconds(int toAdd) {
-  // if seconds buffer reached, add a minute and only add the remainder of seconds
-  if ((currentSeconds + toAdd) > 59 ) {
-    addMinutes(1);
-    addSeconds(toAdd - 60); // recursive call
-  }
-  else // if this doesn't go over, just add it
-    currentSeconds += toAdd;
-}
-
-// adds minutes to current time. assumes not more than an hour is passed
-void addMinutes(int toAdd) {
-  // if minutes buffer reached, add an hour and only add the remainder of minutes
-  if ((currentMinutes + toAdd) > 59 ) {
-    addHours(1);
-    addMinutes(toAdd - 60);
-  }
-  else // otherwise, just add minutes on
-    currentMinutes += toAdd;
-}
-
-// adds hours to current time
-void addHours(int toAdd) {
-  // if trying to add more than 23 hours, reset hours count
-  if ((currentHours + toAdd) > 23 ) {
-    currentHours = 0;
-  }
+// ISR for switching the period
+void selectPeriodISR() {
+  isPeriodChanged = true;
+  if (digitalRead(periodSelectPin) == HIGH)
+    periodState = SHORT_PERIOD;
   else
-    currentHours += toAdd;
+    periodState = LONG_PERIOD;
+}
+
+// service routine for the 100msecond timer
+void timerISR() {
+  // if we're counting short 100ms periods, count each callback
+  if (periodState == SHORT_PERIOD) {
+    timeCount ++;
+  }
+  else { // 100, 200, 300, 400, 500
+    // otherwise, just count every five to get 500ms counts
+    if(subCount >= 4) {
+      timeCount ++;
+      subCount = 0;
+    }
+    else
+      subCount ++;
+  }
+}
+
+// ----------------------- SUPPORTING FUNCTIONS ---------------------------
+
+// stuffs the period into a string and refreshes the displaye
+void drawPeriodStats() {
+  lcd.setCursor(0,1);      // put cursor on second line
+  char tempString[15];
+  // quickly save the current period w/o getting interrupted
+  noInterrupts();
+  int temp = periodState;
+  interrupts();
+  // convert to a nice string
+  sprintf(tempString, "Period: %3d ms", temp);
+  lcd.print(tempString); // print string
+  lcd.setCursor(0,0);    // return cursor to first line
+}
+
+// returns float of the calculated frequency of the signal
+float calcFreq() {
+  // grab the newest time count, freq count, and period
+  noInterrupts();
+  float tempTimeCount = timeCount;
+  double tempFreqCount = queuedFreqCount;
+  float tempPeriod = periodState;
+  timeCount = 0; // reset time count - it has been serviced
+  queuedFreqCount = 0; // reset frequency count
+  interrupts();
+  // period = counts/1000, avgT = counts/period, f = 1/T
+  return (1000.0*tempFreqCount)/tempPeriod; //1.0/(tempTimeCount/(1000*tempPeriod)); 
+}
+
+// draws the passed frequency to line 1
+void drawFrequency(float toWrite) {
+  char tempString[17];
+  // convert to a nice string
+  sprintf(tempString, "Hz: %1.2f", toWrite);//toWrite);
+  lcd.print(toWrite); // print string
+  lcd.setCursor(14,0);
+  lcd.print("Hz");
+  lcd.setCursor(0,0);
+}
+
+// checks if the period stats need to be refreshed
+void checkPeriodSelect() {
+  if (isPeriodChanged)
+    drawPeriodStats();
+}
+
+// checks if timer events have occurred
+void checkTimerCount() {
+  // if any time has passed, its time to calculate the frequency for this run
+  if(timeCount > 0){
+    drawFrequency(calcFreq());
+  }
 }
 
 // --------------------------------- MAIN LOOP ---------------------------------
 void loop() {
-  // if a reset has happened, reset the clock
-  if (resetTime == HIGH) {
-    // reset all time data including the queue
-    currentHours = 0;
-    currentMinutes = 0;
-    currentSeconds = 0;
-    queuedSeconds = 0;
-    // draw the display and reset the resetTime flag
-    drawDisplay();
-    resetTime = LOW;
-  }
-  else {
-    // if we're not resetting this loop, check for new seconds
-    if (queuedSeconds > 0) {
-      // add new seconds onto the time
-      addSeconds(queuedSeconds); // recursively adds additional minutes/hours
-      queuedSeconds = 0; // reset the queued seconds
-      drawDisplay();
-    }
-  }
-  
+  // check if the period has changed, and if so update display
+  checkPeriodSelect();
+  // check if we have new ms, and if so calc freq. and update display
+  checkTimerCount();
+
 }
-
-
