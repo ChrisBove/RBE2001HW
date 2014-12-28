@@ -200,46 +200,6 @@ void NewRoomba::streamCommand(StreamCommand command)
   _serial->write(command);
 }
 
-// Use len=0 to clear the script
-void NewRoomba::script(const uint8_t* script, uint8_t len)
-{
-  _serial->write(152);
-  _serial->write(len);
-  _serial->write(script, len);
-}
-
-void NewRoomba::playScript()
-{
-  _serial->write(153);
-}
-
-// Each tick is 15ms
-void NewRoomba::wait(uint8_t ticks)
-{
-  _serial->write(155);
-  _serial->write(ticks);
-}
-
-void NewRoomba::waitDistance(int16_t mm)
-{
-  _serial->write(156);
-  _serial->write((mm & 0xff00) >> 8);
-  _serial->write(mm & 0xff);
-}
-
-void NewRoomba::waitAngle(int16_t degrees)
-{
-  _serial->write(157);
-  _serial->write((degrees & 0xff00) >> 8);
-  _serial->write(degrees & 0xff);
-}
-
-// Can use the negative of an event type to wait for the inverse of an event
-void NewRoomba::waitEvent(EventType type)
-{
-  _serial->write(158);
-  _serial->write(type);
-}
 
 // Reads at most len bytes and stores them to dest
 // If successful, returns true.

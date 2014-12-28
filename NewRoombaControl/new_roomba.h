@@ -503,57 +503,15 @@ public:
     /// See the Open Interface manual for details on the resutting data.
     /// The packets will be sent every 15ms.
     /// You can use pollSensors() to receive sensor data streams.
-    /// Create only. No equivalent on Roomba.
     /// See the Open Interface maual for more details and limitations.
     /// \param[in] packetIDs Array specifying sensor packet IDs from Roomba::Sensor to be sent.
     /// \param[in] len Number of IDs in packetIDs
     void stream(const uint8_t* packetIDs, int len);
 
     /// Pause or resume a stream of sensor data packets previously requested by stream()
-    /// Create only. No equivalent on Roomba.
     /// \param[in] command One of Roomba::StreamCommand
     void streamCommand(StreamCommand command);
 
-    /// Defines a command script which can later be executed with playScript(). You can clear the script by calling 
-    /// script(NULL, 0);
-    /// Create only. No equivalent on Roomba.
-    /// \param[in] script Array containing a sequence of Roomba OI commands.
-    /// \param[in] len Length of the script in bytes.
-    void script(const uint8_t* script, uint8_t len);
-
-    /// Executes a previously defined script, 
-    /// the last one specified by script()
-    /// Create only. No equivalent on Roomba.
-    void playScript();
-
-    /// Tells the Roomba to wait for a specified time.
-    /// This command is intended for use in scripting only.
-    /// Create only. No equivalent on Roomba.
-    /// \param[in] ticks The number of ticks to wait. Each tick is 15ms
-    void wait(uint8_t ticks);
-
-    /// Causes Roomba to wait until it has travelled the distance specified. 
-    /// Roomba will not react to any inputs until the wait has completed. 
-    /// Note that this does not cause the host arduino to wait, it only sends the wait comman to the Roomba
-    /// This command is intended for use in scripting only.
-    /// Create only. No equivalent on Roomba.
-    /// \param[in] mm Distance to wait for in mm
-    void waitDistance(int16_t mm);
-
-    /// Causes Roomba to wait until it has rotated through the specified angle.
-    /// Roomba will not react to any inputs until the wait has completed. 
-    /// Note that this does not cause the host arduino to wait, it only sends the wait comman to the Roomba
-    /// This command is intended for use in scripting only.
-    /// Create only. No equivalent on Roomba.
-    /// \param[in] degrees Angle to wait for in degrees
-    void waitAngle(int16_t degrees);
-
-    /// Cause the Create to wait for a specified event.
-    /// Roomba will not react to any inputs until the wait has completed. 
-    /// Note that this does not cause the host arduino to wait, it only sends the wait comman to the Roomba
-    /// Create only. No equivalent on Roomba.
-    /// \param[in] type Event type to wait for. One of Roomba::EventType
-    void waitEvent(EventType type);
 
     /// Low level funciton to read len bytes of data from the Roomba
     /// Blocks untill all len bytes are read or a read timeout occurs.
