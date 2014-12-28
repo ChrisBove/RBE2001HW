@@ -537,7 +537,6 @@ public:
     /// different lengths, and it is the callers responsibilty to make sure len agrees with the expected 
     /// length of the sensor data. See the Open Interface manual for details on sensor packet lengths.
     /// Blocks until all len bytes are read or a read timeout occurs.
-    /// Create only. No equivalent on Roomba.
     /// \param[in] packetIDs Array of IDs  from Roomba::Sensor of the sensor packets to read
     /// \param[in] numPacketIDs number of IDs in the packetIDs array
     /// \param[out] dest Destination where the read data is stored. Must have at least len bytes available.
@@ -559,14 +558,6 @@ public:
     /// (at most len bytes) will have been stored into dest, ready for the caller to decode.
     bool pollSensors(uint8_t* dest, uint8_t len);
 
-    /// Reads a the contents of the script most recently specified by a call to script().
-    /// Create only. No equivalent on Roomba.
-    /// \param[out] dest Destination where the read data is stored. Must have at least len bytes available.
-    /// \param[in] len The maximum number of bytes to place in dest. If the script is actually longer than len
-    /// only len bytes will be written
-    /// \return The actual number of bytes in the script, even if this is more than len. By calling 
-    /// getScript(NULL, 0), you can determine how many bytes would be required to store the script.
-    uint8_t getScript(uint8_t* dest, uint8_t len);
   
 private:
     /// \enum PollState
