@@ -85,11 +85,6 @@ void NewRoomba::fullMode()
   _serial->write(132);
 }
 
-void NewRoomba::power()
-{
-  _serial->write(133);
-}
-
 void NewRoomba::clean() {
   _serial->write(135);
 }
@@ -110,6 +105,11 @@ void NewRoomba::dock()
 // TODO implement scheduling, Opcode 167
 
 // TODO implement date/time setting, Opcode 168
+
+void NewRoomba::powerDown()
+{
+  _serial->write(133);
+}
 
 void NewRoomba::demo(Demo demo)
 {

@@ -420,9 +420,6 @@ public:
     // for full control of the Roomba
     void fullMode();
 
-    /// Puts a Roomba in sleep mode.
-    /// Roomba only, no equivalent for Create.
-    void power();
     
     
     // enters normal cleaning mode
@@ -438,6 +435,11 @@ public:
     /// seek the docking station.
     /// No equivalent for Create.
     void dock();
+    
+    
+    /// Puts a Roomba in sleep mode.
+    /// Roomba only, no equivalent for Create.
+    void powerDown();
 
     /// Starts the requirested built-in demo
     /// \param[in] demo The demo number. One of Roomba::Demo
