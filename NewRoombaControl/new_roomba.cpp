@@ -69,6 +69,12 @@ void NewRoomba::baud(Baud baud)
     _serial->begin(_baud);
 }
 
+// Changes mode to passive
+void NewRoomba::passive()
+{
+    _serial->write(128); // same as starting
+}
+
 void NewRoomba::safeMode()
 {
   _serial->write(131);

@@ -55,6 +55,7 @@
 /// \version 1.1 Updated docs, added Youtube video
 /// \version 1.2 Compiles under Arduino 1.0
 /// \version 1.3  Updated author and distribution location details to airspayce.com
+/// \version 1.4 New methods, updates for 500 series Roomba
 ///
 /// \author  Mike McCauley (mikem@airspayce.com)
 // Copyright (C) 2010 Mike McCauley
@@ -385,8 +386,8 @@ public:
     /// Constructor. You can have multiple simultaneous Roomba if that makes sense.
     /// \param[in] serial POinter to the HardwareSerial port to use to communicate with the Roomba. 
     /// Defaults to &Serial
-    /// \param[in] baud the baud rate to use on the serial port. Defaults to 57600, the default for the Roomba.
-    NewRoomba(HardwareSerial* serial = &Serial, Baud baud = Baud57600);
+    /// \param[in] baud the baud rate to use on the serial port. Defaults to 115200, the default for the 500 series Roomba.
+    NewRoomba(HardwareSerial* serial = &Serial, Baud baud = Baud115200);
 
     /// Resets the Roomba. 
     /// It will emit its startup message
@@ -406,6 +407,9 @@ public:
     /// Changes the baud rate
     /// Baud is on of the Roomba::Baud enums
     void baud(Baud baud);
+    
+    // Sets the mode to passive
+    void passive();
 
     /// Sets the OI to Safe mode.
     /// In Safe mode, the cliff and wheel drop detectors work to prevent Roomba driving off a cliff
