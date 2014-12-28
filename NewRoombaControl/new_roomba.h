@@ -271,9 +271,9 @@ public:
 	IRCommandArcForwardRight        = 140,
 	IRCommandDriveStop              = 141,
 	// Scheduling Remote:
-	IRCommandSendAll                = 142,
+	IRCommandDownload               = 142,
 	IRCommandSeekDock               = 143,
-	// Home Base:
+	// Discovery Home Base:
 	IRCommandReserved1              = 240,
 	IRCommandRedBuoy                = 248,
 	IRCommandGreenBuoy              = 244, 
@@ -282,6 +282,19 @@ public:
 	IRCommandRedBuoyForceField      = 250,
 	IRCommandGreenBuoyForceField    = 246,
 	IRCommandRedGreenBuoyForceField = 254,
+        // Roomba 500 drive-on charger/home base:
+        IRCommand500BaseReserved               = 160,
+	IRCommand500BaseRedBuoy                = 168,
+	IRCommand500BaseGreenBuoy              = 164, 
+	IRCommand500BaseForceField             = 161,
+	IRCommand500BaseRedGreenBuoy           = 172,
+	IRCommand500BaseRedBuoyForceField      = 169,
+	IRCommand500BaseGreenBuoyForceField    = 165,
+	IRCommand500BaseRedGreenBuoyForceField = 173,
+        // Roomba 500 Virtual Wall:
+        IRCommand500Wall = 162
+        // Roomba 500 Virtual Wall LightHouse
+        // TODO -- see documentation
     } IRCommand;
   
     /// \enum ChargeState
