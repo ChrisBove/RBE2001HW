@@ -24,7 +24,7 @@ void NewRoomba::reset()
 void NewRoomba::start()
 {
     _serial->begin(_baud);
-    _serial->write(128);
+    passive();
 }
 
 uint32_t NewRoomba::baudCodeToBaudRate(Baud baud)
