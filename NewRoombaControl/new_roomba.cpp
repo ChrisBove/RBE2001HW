@@ -136,6 +136,22 @@ void NewRoomba::driveDirect(int16_t leftVelocity, int16_t rightVelocity)
   _serial->write(leftVelocity & 0xff);
 }
 
+// Sets PWM duty cycles on cleaning motors, see documentation
+void NewRoomba::pwmCleaningMotors(uint8_t dutyCycle0, uint8_t dutyCycle1, uint8_t dutyCycle2)
+{
+  _serial->write(144);
+  _serial->write(dutyCycle2);
+  _serial->write(dutyCycle1);
+  _serial->write(dutyCycle0);
+}
+
+// Sets cleaning motor outputs on or off, see documentation
+void NewRoomba::cleaningMotors(uint8_t out)
+{
+  _serial->write(138);
+  _serial->write(out);
+}
+
 void NewRoomba::leds(uint8_t leds, uint8_t powerColour, uint8_t powerIntensity)
 {
   _serial->write(139);
@@ -147,22 +163,6 @@ void NewRoomba::leds(uint8_t leds, uint8_t powerColour, uint8_t powerIntensity)
 void NewRoomba::digitalOut(uint8_t out)
 {
   _serial->write(147);
-  _serial->write(out);
-}
-
-// Sets PWM duty cycles on low side drivers
-void NewRoomba::pwmDrivers(uint8_t dutyCycle0, uint8_t dutyCycle1, uint8_t dutyCycle2)
-{
-  _serial->write(144);
-  _serial->write(dutyCycle2);
-  _serial->write(dutyCycle1);
-  _serial->write(dutyCycle0);
-}
-
-// Sets low side driver outputs on or off
-void NewRoomba::drivers(uint8_t out)
-{
-  _serial->write(138);
   _serial->write(out);
 }
 

@@ -461,6 +461,17 @@ public:
     /// \param[in] leftVelocity Left wheel velocity in mm/s (-500 to 500 mm/s)
     /// \param[in] rightVelocity Right wheel velocity in mm/s (-500 to 500 mm/s)
     void driveDirect(int16_t leftVelocity, int16_t rightVelocity);
+    
+    /// Sets the cleaning motors on or off: main brush, side brush, and vacuum
+    /// \param[in] out Bitmask of outputs to enable. ORed value ROOMBA_MASK_DRIVER_*
+    void cleaningMotors(uint8_t out);
+    
+    /// Sets the duty cycle for PWM outputs on the cleaning motors, positive values are default/cleaning direction
+    /// \param[in] dutyCycle0 Duty cycle for main brush motor. -127 to 127.
+    /// \param[in] dutyCycle1 Duty cycle for side brush motor. -127 to 127.
+    /// \param[in] dutyCycle2 Duty cycle for vacuum motor. 0 to 127.
+    void pwmCleaningMotors(uint8_t dutyCycle0, uint8_t dutyCycle1, uint8_t dutyCycle2); 
+
 
     /// Controls the LEDs on the Create
     /// \param[in] leds Bitmask specifying which LEDs to activate. ORed combination of ROOMBA_MASK_LED_*
@@ -474,17 +485,6 @@ public:
     /// \param[in] out Mask specifiying which outputs to enable. ORed value ROOMBA_MASK_DIGITAL_OUT_*
     void digitalOut(uint8_t out);
 
-    /// Sets the duty cycle for PWM outputs on the low side drivers. These can be use for PWM driving of
-    /// motors, lights etc.
-    /// Create only. No equivalent on Roomba.
-    /// \param[in] dutyCycle0 Duty cycle for low side driver 0. 0 to 128.
-    /// \param[in] dutyCycle1 Duty cycle for low side driver 1. 0 to 128.
-    /// \param[in] dutyCycle2 Duty cycle for low side driver 2. 0 to 128.
-    void pwmDrivers(uint8_t dutyCycle0, uint8_t dutyCycle1, uint8_t dutyCycle2); 
-
-    /// Sets the low side drivers on or off. On the Romba, these control the 3 motors.
-    /// \param[in] out Bitmask of putputs to enable. ORed value ROOMBA_MASK_DRIVER_*
-    void drivers(uint8_t out);
 
     /// Sends the requested byte out of the low side driver 1 (pin 23 on the Cargo Bay Connector).
     /// low side driver 1 can be used to drive an IR transmitter to send commands to other Roombas and Creates. 
