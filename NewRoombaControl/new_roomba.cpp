@@ -107,6 +107,10 @@ void NewRoomba::dock()
   _serial->write(143);
 }
 
+// TODO implement scheduling, Opcode 167
+
+// TODO implement date/time setting, Opcode 168
+
 void NewRoomba::demo(Demo demo)
 {
   _serial->write(136);
