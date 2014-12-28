@@ -436,6 +436,10 @@ public:
     /// No equivalent for Create.
     void dock();
     
+    // TODO implement scheduling, Opcode 167
+
+    // TODO implement date/time setting, Opcode 168
+    
     
     /// Puts a Roomba in sleep mode.
     /// Roomba only, no equivalent for Create.
