@@ -90,6 +90,18 @@ void NewRoomba::power()
   _serial->write(133);
 }
 
+void NewRoomba::clean() {
+  _serial->write(135);
+}
+
+void NewRoomba::maxClean() {
+  _serial->write(136);
+}
+
+void NewRoomba::spotClean() {
+  _serial->write(134);
+}
+
 void NewRoomba::dock()
 {
   _serial->write(143);
@@ -101,20 +113,6 @@ void NewRoomba::demo(Demo demo)
   _serial->write(demo);
 }
 
-void NewRoomba::cover()
-{
-  _serial->write(135);
-}
-
-void NewRoomba::coverAndDock()
-{
-  _serial->write(143);
-}
-
-void NewRoomba::spot()
-{
-  _serial->write(134);
-}
 
 void NewRoomba::drive(int16_t velocity, int16_t radius)
 {

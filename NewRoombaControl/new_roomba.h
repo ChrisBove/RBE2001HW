@@ -423,6 +423,16 @@ public:
     /// Puts a Roomba in sleep mode.
     /// Roomba only, no equivalent for Create.
     void power();
+    
+    
+    // enters normal cleaning mode
+    void clean();
+    
+    // enters the max cleaning mode
+    void maxClean();
+    
+    // enters the spot cleaning mode
+    void spotClean();
 
     /// Causes roomba to immediately 
     /// seek the docking station.
@@ -432,18 +442,7 @@ public:
     /// Starts the requirested built-in demo
     /// \param[in] demo The demo number. One of Roomba::Demo
     void demo(Demo demo);
-
-    /// Starts the Cover demo
-    /// Changes mode to Passive
-    void cover();
-
-    /// Starts the Cover and Dock demo
-    /// Changes mode to Passive
-    void coverAndDock();
-
-    /// Starts the Spot Cover demo
-    /// Changes mode to Passive
-    void spot();
+    
 	
     /// Starts the Roomba driving with a specified wheel velocity and radius of turn
     /// \param[in] velocity Speed in mm/s (-500 to 500 mm/s)
