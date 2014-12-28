@@ -252,34 +252,6 @@ public:
 	StreamCommandResume = 1,
     } StreamCommand;
   
-    /// \enum EventType
-    /// Values to pass to Roomba::waitEvent()
-    typedef enum
-    {
-	EventTypeWheelDrop       = 1,
-	EventTypeFronWheelDrop   = 2,
-	EventTypeLeftWheelDrop   = 3,
-	EventTypeRightWheelDrop  = 4,
-	EventTypeBump            = 5,
-	EventTypeLeftBump        = 6,
-	EventTypeRightBump       = 7,
-	EventTypeVirtualWall     = 8,
-	EventTypeWall            = 9,
-	EventTypeCliff           = 10,
-	EventTypeLeftCliff       = 11,
-	EventTypeFrontLeftCliff  = 12,
-	EventTypeFrontRightCliff = 13,
-	EventTypeRightCliff      = 14,
-	EventTypeHomeBase        = 15,
-	EventTypeAdvanceButton   = 16,
-	EventTypePlayButton      = 17,
-	EventTypeDigitalInput0   = 18,
-	EventTypeDigitalInput1   = 19,
-	EventTypeDigitalInput2   = 20,  
-	EventTypeDigitalInput3   = 21,
-	EventTypeModePassive     = 22,
-    } EventType;
-  
     /// \enum IRCommand
     /// Values for sensor packet ID 27
     typedef enum
@@ -353,9 +325,11 @@ public:
 	SensorCliffRight               = 12,
 	SensorVirtualWall              = 13,
 	SensorOvercurrents             = 14,
-//	SensorUnused1                  = 15,
+	SensorDirtDetect               = 15,
 //	SensorUnused2                  = 16,
-	SensorIRByte                   = 17,
+	SensorOmniIRChar               = 17,
+        SensorLeftIRChar               = 52,
+        SensorRightIRChar              = 53,
 	SensorButtons                  = 18,
 	SensorDistance                 = 19,
 	SensorAngle                    = 20,
@@ -370,17 +344,31 @@ public:
 	SensoCliffFrontLeftSignal      = 29,
 	SensoCliffFrontRightSignal     = 30,
 	SensoCliffRightSignal          = 31,
-	SensorUserDigitalInputs        = 32,
-	SensorUserAnalogInput          = 33,
+//	SensorUserDigitalInputs        = 32,
+//	SensorUserAnalogInput          = 33,
 	SensorChargingSourcesAvailable = 34,
 	SensorOIMode                   = 35,
 	SensorSongNumber               = 36,
 	SensorSongPlaying              = 37,
 	SensorNumberOfStreamPackets    = 38,
-	SensorVelocity                 = 39,
-	SensorRadius                   = 40,
-	SensorRightVelocity            = 41,
-	SensorLeftVelocity             = 42,
+	SensorRequestedVelocity        = 39,
+	SensorRequestedRadius          = 40,
+	SensorRequestedRightVelocity   = 41,
+	SensorRequestedLeftVelocity    = 42,
+        SensorRightEncoderCount        = 43,
+        SensorLeftEncoderCount         = 44,
+        SensorLightBumper              = 45,
+        SensorLightBumperLeft          = 46,
+        SensorLightBumperFrontLeft     = 47,
+        SensorLightBumperCenterLeft    = 48,
+        SensorLightBumperCenterRight   = 49,
+        SensorLightBumperFrontRight    = 50,
+        SensorLightBumperRight         = 51,
+        SensorLeftMotorCurrent         = 54,
+        SensorRightMotorCurrent        = 55,
+        SensorMainBrushCurrent         = 56,
+        SensorSideBrushCurrent         = 57,
+        SensorStasis                   = 58
     } Sensor;
   
     /// Constructor. You can have multiple simultaneous Roomba if that makes sense.
