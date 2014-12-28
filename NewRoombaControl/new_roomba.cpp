@@ -160,19 +160,15 @@ void NewRoomba::leds(uint8_t leds, uint8_t powerColor, uint8_t powerIntensity)
   _serial->write(powerIntensity);
 }
 
-void NewRoomba::digitalOut(uint8_t out)
-{
-  _serial->write(147);
-  _serial->write(out);
-}
 
-// Modulates low side driver 1 (pin 23 on Cargo Bay Connector)
-// with the given IR command
-void NewRoomba::sendIR(uint8_t data)
-{
-  _serial->write(151);
-  _serial->write(data);
-}
+// TODO - SCHEDULING LEDS - OPCODE 162
+
+// TODO - DIGIT LED'S RAW - OPCODE 163
+
+// TODO - DIGIT LED'S ASCII - OPCODE 164
+
+// TODO - BUTTONS - OPCODE 165, lets you push the buttons virtually
+
 
 // Define a song
 // Data is 2 bytes per note

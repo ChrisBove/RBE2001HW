@@ -480,17 +480,13 @@ public:
     /// \param[in] powerIntensity Power LED intensity. 0 to 255. 0 = off, 255 = full intensity
     void leds(uint8_t leds, uint8_t powerColor, uint8_t powerIntensity);
 
-    /// Sets the digital output pins on the Cargo Bay Connector of the Create
-    /// Create only. No equivalent on Roomba.
-    /// \param[in] out Mask specifiying which outputs to enable. ORed value ROOMBA_MASK_DIGITAL_OUT_*
-    void digitalOut(uint8_t out);
-
-
-    /// Sends the requested byte out of the low side driver 1 (pin 23 on the Cargo Bay Connector).
-    /// low side driver 1 can be used to drive an IR transmitter to send commands to other Roombas and Creates. 
-    /// Create only. No equivalent on Roomba.
-    /// \param[in] data Data byte to transmit
-    void sendIR(uint8_t data);
+    // TODO - SCHEDULING LEDS - OPCODE 162
+    
+    // TODO - DIGIT LED'S RAW - OPCODE 163
+    
+    // TODO - DIGIT LED'S ASCII - OPCODE 164
+    
+    // TODO - BUTTONS - OPCODE 165, lets you push the buttons virtually
 
     /// Defines a song which can later be played with playSong()
     /// \param[in] songNumber Song number for this song. 0 to 15
