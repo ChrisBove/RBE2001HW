@@ -152,11 +152,11 @@ void NewRoomba::cleaningMotors(uint8_t out)
   _serial->write(out);
 }
 
-void NewRoomba::leds(uint8_t leds, uint8_t powerColour, uint8_t powerIntensity)
+void NewRoomba::leds(uint8_t leds, uint8_t powerColor, uint8_t powerIntensity)
 {
   _serial->write(139);
   _serial->write(leds);
-  _serial->write(powerColour);
+  _serial->write(powerColor);
   _serial->write(powerIntensity);
 }
 

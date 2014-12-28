@@ -473,12 +473,12 @@ public:
     void pwmCleaningMotors(uint8_t dutyCycle0, uint8_t dutyCycle1, uint8_t dutyCycle2); 
 
 
-    /// Controls the LEDs on the Create
+    /// Controls the LEDs on the Roomba
     /// \param[in] leds Bitmask specifying which LEDs to activate. ORed combination of ROOMBA_MASK_LED_*
     /// \param[in] powerColour The colour of the Power LED. 0 to 255. 0 = green, 255 = red, 
     /// intermediate values are intermediate colours
     /// \param[in] powerIntensity Power LED intensity. 0 to 255. 0 = off, 255 = full intensity
-    void leds(uint8_t leds, uint8_t powerColour, uint8_t powerIntensity);
+    void leds(uint8_t leds, uint8_t powerColor, uint8_t powerIntensity);
 
     /// Sets the digital output pins on the Cargo Bay Connector of the Create
     /// Create only. No equivalent on Roomba.
