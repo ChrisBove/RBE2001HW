@@ -1,0 +1,90 @@
+\section{part6.c File Reference}
+\label{part6_8c}\index{part6.c@{part6.c}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$readline/readline.h$>$}\par
+{\tt \#include $<$readline/history.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include \char`\"{}employee.h\char`\"{}}\par
+{\tt \#include \char`\"{}part6.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{FILE\_\-NAME}~\char`\"{}part6.txt\char`\"{}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \bf{main} ()
+\item 
+int \bf{write\-Employee\-Log} (\bf{Employee} array[$\,$], int length)
+\item 
+void \bf{output\-Employee2Lines} (int $\ast$fd, \bf{Employee} employee)
+\item 
+void \bf{free\-Employee\-Array} (\bf{Employee} array[$\,$], int length)
+\item 
+void \bf{free\-Employee} (\bf{Employee} employee)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{part6.c@{part6.c}!FILE_NAME@{FILE\_\-NAME}}
+\index{FILE_NAME@{FILE\_\-NAME}!part6.c@{part6.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define FILE\_\-NAME~\char`\"{}part6.txt\char`\"{}}\label{part6_8c_b117546549783a058d0321a287699579}
+
+
+
+
+\subsection{Function Documentation}
+\index{part6.c@{part6.c}!freeEmployee@{freeEmployee}}
+\index{freeEmployee@{freeEmployee}!part6.c@{part6.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void free\-Employee (\bf{Employee} {\em employee})}\label{part6_8c_1382781984017ba4d7c3965bd39535cb}
+
+
+frees the employee, and all data in it \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em employee}]pointer to employee to free \end{description}
+\end{Desc}
+\index{part6.c@{part6.c}!freeEmployeeArray@{freeEmployeeArray}}
+\index{freeEmployeeArray@{freeEmployeeArray}!part6.c@{part6.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void free\-Employee\-Array (\bf{Employee} {\em array}[$\,$], int {\em length})}\label{part6_8c_0de2fa2b213192c6f4be528258f5f78a}
+
+
+frees the employee array, and all data in it \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em array}]of employee2 pointers \item[{\em length}]of array \end{description}
+\end{Desc}
+\index{part6.c@{part6.c}!main@{main}}
+\index{main@{main}!part6.c@{part6.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int main ()}\label{part6_8c_e66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+\index{part6.c@{part6.c}!outputEmployee2Lines@{outputEmployee2Lines}}
+\index{outputEmployee2Lines@{outputEmployee2Lines}!part6.c@{part6.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void output\-Employee2Lines (int $\ast$ {\em fd}, \bf{Employee} {\em employee})}\label{part6_8c_249e312ace90679ac0bf7d2a32bb9069}
+
+
+Outputs one Employee2 structure in verbose form, to an open file stream uses one line for each data piece \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]The output stream to write to (must already be open). \item[{\em employee}]Pointer to the structure to print \end{description}
+\end{Desc}
+\index{part6.c@{part6.c}!writeEmployeeLog@{writeEmployeeLog}}
+\index{writeEmployeeLog@{writeEmployeeLog}!part6.c@{part6.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int write\-Employee\-Log (\bf{Employee} {\em array}[$\,$], int {\em length})}\label{part6_8c_85c8a4fb48576504799ee5dd64a18d30}
+
+
+Writes employees to a text file, each data on separate line \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em array}]of employee2 pointers \item[{\em length}]of array \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int 1 if failed to write file, 0 if succeeded \end{Desc}

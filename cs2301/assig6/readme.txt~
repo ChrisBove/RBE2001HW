@@ -1,0 +1,31 @@
+Name: Christopher Bove
+Username: cpbove
+
+Files:
+
+  stack.c   - stack source code
+  stack.h   - stack header file
+  stacktest.c - c file holding functions for employees
+  employee.h - header file for holding employer structs and prototypes
+  part3.c - main loop for Part C of section A
+  part3.h - header file for Section A code, just prototypes
+  part5.c - Part 5 code main loop
+  part5.h - Part 5 header file
+  part6.c - Part 6 main loop
+  part6.h - header for Part 6 code
+  part7.c - Part 7 main loop code
+  part7.h - Header for Part 7
+  makefile   - c code compiling configuration, makes .o's and executables
+  Doxyfile   - doxygen template for creating html documentation of this code
+  readme.txt - (this file) - readme for this directory
+
+To compile code:
+  Have standard gcc compiler. Type "make" in the terminal within this 
+directory to make three executable files from code mentioned above. Doing 
+"make" will create object files from each source code file and automatically
+link them appropriately to create executables. See makefile for details.
+
+To generate Doxygen files:
+  run "make docs" to generate the html files in the directory specified by the
+make file. Then those files are copied to cpbove's public directory. Change as
+appropriate.

@@ -1,0 +1,133 @@
+/** Program to demonstrate string reversal
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include <libgen.h>
+
+/** Print usage message
+ */
+void usage () {
+  printf("usage: reversestring \"string with characters to reverse\"\n");
+  printf("   OR: reversewords \"string with words to reverse\"\n");
+}
+
+/** Reverses all the characters in a string, in place.
+ * For example, "hello world" becomes "dlrow olleh"
+ */
+
+void reversestring(char* s) {
+  char temp; // should only need 1 char variable for temp storage
+  // Find length of string, see if even or odd
+  int length = strlen(s);
+  if((length % 2) == 0) { // is string even length?
+    // need to swap 1st half of string "hose" -> "esoh"
+    int i;
+    for (i = 0; i < length/2; i++) {
+      // swap i with length-i
+      temp = s[i];
+      s[i] = s[(length-1)-i];
+      s[(length-1)-i] = temp;
+    }
+  }
+  else { // string is odd length
+    // need to swap 1st half, excluding middle "horse" -> "esroh"
+    int i;
+    for (i = 0; i <= (length/2) - 1; i++) {
+      // swap i with length-i
+      temp = s[i];
+      s[i] = s[(length-1)-i];
+      s[(length-1)-i] = temp;
+    }
+  }		
+  // examples: "hose" "horse" 
+}
+
+/** Reverses the characters between 2 points in a string
+ *
+*/
+void reverse(char*s, int start, int end, int length) {
+  char temp; // should only need 1 char variable for temp storage
+  printf("start= %d, end= %d, length= %d\n", start, end, length);
+  if((length % 2) == 0) { // is string even length?
+    // need to swap 1st half of string "hose" -> "esoh"
+    int i;
+    for (i = 0; i < (length/2); i++) {
+      // swap i with length-i
+      temp = s[i + start];
+      s[i+start] = s[(end)-i];
+      s[(end)-i] = temp;
+    }
+  }
+  else { // string is odd length
+    // need to swap 1st half, excluding middle "horse" -> "esroh"
+    int i;
+    for (i = 0; i <= (length/2) - 1; i++) {
+      // swap i with length-i
+      temp = s[i + start];
+      s[i+start] = s[(end)-i];
+      s[(end)-i] = temp;
+    }
+  }
+}
+
+/** Reverses all the words in a string, in place.
+ * For example, "hello world" becomes "world hello"
+ */
+void reversewords(char* s) {
+  reversestring(s); // reverse the string first
+  printf("reversed: %s\n", s);
+  // find the space
+  int i; // counter for stepping through
+  int start_word = 0; // start of the word
+  int length = strlen(s);
+  for (i = 0; i < length; i++) {
+    // if we find a space
+    if (s[i] == 32) {
+      //printf("found a space!\n");
+      // reverse things between start of word and here
+      reverse(s, start_word, i-1, ((i-1)-start_word)+1);
+      start_word = i+1; // start of next word is on the next index
+    }
+  }
+  //printf("done first: %s start_word = %d\n", s, start_word);
+  // done finding spaces, so we need to reverse the last one.
+  reverse(s, start_word, length-1, ((length)-start_word)+1);
+}
+
+/** Must take exactly one argument.
+ */
+int main(int argc, char* argv[]) {
+
+  char* command; // duplicate of command name
+  char* basec;    // basename of command
+  char* s;       // String to reverse;
+
+  if (argc != 2) { // Check that it was called with exactly one argument
+    usage();
+    return 1;
+  }
+
+  s = strdup(argv[1]); // Sring to reverse
+
+  // See how the command was invoked
+
+  // First strip down to just the basename, no directory prefix
+  command = strdup(argv[0]);
+  basec = basename(command);
+
+  if (strcmp(basec, "reversestring") == 0) {
+    printf("Original string: %s\n", s);
+    reversestring(s);
+    printf("Reversed string: %s\n", s);
+    return 0;
+  } else if (strcmp(basec, "reversewords") == 0) {
+    printf("Original string: %s\n", s);
+    reversewords(s);
+    printf("Reversed string: %s\n", s);
+    return 0;
+  } else { // Those are the only two valid choices
+    usage();
+    return 1;
+  }
+}

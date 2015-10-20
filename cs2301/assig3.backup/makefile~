@@ -1,0 +1,10 @@
+all: assig3
+
+assig2: assig3.o
+	gcc -g assig3.o -o assig3
+
+assig2.o: assig3.c
+	gcc -g -c assig3.c
+
+clean:
+	rm -f assig3.o assig3

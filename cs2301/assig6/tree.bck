@@ -1,0 +1,75 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include "tree.h"
+
+/** adds a node to the tree
+ *  in ascending order
+ * @param current_tnode pointer to existing node
+ * @param value string that the node should have
+ * @return Pointer to the root of the updated tree
+ */
+Tnode *add_tnode(Tnode *current_tnode, char* value) {
+  if(current_tnode == NULL) {// if pointer is null
+    printf("Pointer is null, val is %s\n", value);
+    Tnode *node; // Holds pointer to the newly-allocated node
+    node = (Tnode *) malloc(sizeof(Tnode)); // allocate new node
+    node->value = value; // put value into the new
+    //Tnode *left_node = (Tnode *) malloc(sizeof(Tnode)); // allocate new node
+    //node->left = left_node; //left_node; // put value into the new
+    node->left = NULL;
+    //Tnode *right_node = (Tnode *) malloc(sizeof(Tnode)); // allocate new node
+    //node->right = right_node; //right_node; // put value into the new
+    node->right = NULL;
+    return node; // return ptr to newly allocated node
+  }
+  else {// if pointer not null
+    printf("Pointer is not null, val is %s\n", current_tnode->value);
+    // compare new value to value in the node
+    if( strcasecmp(value, current_tnode->value) <= 0) { // value is less than node val
+      // so val is higher than node val
+      //printf("val is higher than node");
+      // if there is no left child, than new node becomes left child]
+      if (current_tnode->left->value == NULL)
+        current_tnode->left->value = value;
+      // otherwise, pass new node to left child
+      else
+        add_tnode(current_tnode->left, value);
+      //current_tnode->left = add_tnode(current_tnode->left, value);
+      return current_tnode;
+    }
+    else {
+      // so val is lower than node val
+      //printf("val is NOT higher than node");
+      if (current_tnode->right->value == NULL)
+        current_tnode->right->value = value;
+      // otherwise, pass new node to left child
+      else
+        add_tnode(current_tnode->right, value);
+      //add_tnode(current_tnode->right, value);
+      //current_tnode->right = add_tnode(current_tnode->right, value);
+      return current_tnode;
+    }
+    // do this function recursively on either left or right child
+    // return value returned by function.
+  }
+}
+
+/** prints nodes of tree in ascending order
+ *  in ascending order
+ * @param current_tnode pointer to existing node
+ */
+void print_tnode(Tnode *current_tnode) {
+  if(current_tnode == NULL) {// if pointer is null
+    // print nothing or null statement
+    printf("NULL\n");
+  }
+  else {
+    // print all on left
+    print_tnode(current_tnode->left);
+    // print this one
+    printf("%s\n", current_tnode->value);
+    // print all on right
+    print_tnode(current_tnode->right);
+  }
+}

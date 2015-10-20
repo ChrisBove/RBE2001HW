@@ -1,0 +1,24 @@
+# Executable depends on the 3 object files
+ctest: ctest.o mystring.o mystrlen.o
+	gcc -g ctest.o mystring.o mystrlen.o -o ctest
+
+# Object file depends on source and header files
+ctest.o: ctest.c mystring.h 
+	gcc -g -c ctest.c
+
+# Object file depends on source and header files
+mystring.o: mystring.c mystring.h mystrlen.h
+	gcc -g -c mystring.c
+
+mystrlen.o: mystrlen.c mystrlen.h
+	gcc -g -c mystrlen.c
+
+clean: 
+	rm -f mystring.o ctest.o mystrlen.o ctest
+
+# Typing "make docs" will generate Doxygen files, set proper permissions,
+# and copy into ~/public_html/courses/cs2301-b2014/assig4 .
+docs:
+	doxygen
+	chmod a+r html/*
+	cp -p -r html/* ~/public_html/cs2301/assig4

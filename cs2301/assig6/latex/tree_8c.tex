@@ -1,0 +1,61 @@
+\section{tree.c File Reference}
+\label{tree_8c}\index{tree.c@{tree.c}}
+C source code for tree management functions. 
+
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include \char`\"{}tree.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\bf{Tnode} $\ast$ \bf{add\_\-tnode} (\bf{Tnode} $\ast$current\_\-tnode, char $\ast$value)
+\item 
+void \bf{print\_\-tnode} (\bf{Tnode} $\ast$current\_\-tnode)
+\item 
+void \bf{free\_\-nodes} (\bf{Tnode} $\ast$current\_\-tnode)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+C source code for tree management functions. 
+
+\begin{Desc}
+\item[Author:]Christopher Bove (cpbove) \end{Desc}
+\begin{Desc}
+\item[Date:]27 April 2015 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{tree.c@{tree.c}!add_tnode@{add\_\-tnode}}
+\index{add_tnode@{add\_\-tnode}!tree.c@{tree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Tnode}$\ast$ add\_\-tnode (\bf{Tnode} $\ast$ {\em current\_\-tnode}, char $\ast$ {\em value})}\label{tree_8c_0e09ab427d9f10182d2261a14b349f66}
+
+
+adds a node to the tree in ascending order \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em current\_\-tnode}]pointer to existing node \item[{\em value}]string that the node should have \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the root of the updated tree \end{Desc}
+\index{tree.c@{tree.c}!free_nodes@{free\_\-nodes}}
+\index{free_nodes@{free\_\-nodes}!tree.c@{tree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void free\_\-nodes (\bf{Tnode} $\ast$ {\em current\_\-tnode})}\label{tree_8c_5ff3cf4a1ae4638168f0c003f04cc718}
+
+
+traverses tree and frees all the nodes in ascending order \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em current\_\-tnode}]pointer to existing node \end{description}
+\end{Desc}
+\index{tree.c@{tree.c}!print_tnode@{print\_\-tnode}}
+\index{print_tnode@{print\_\-tnode}!tree.c@{tree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void print\_\-tnode (\bf{Tnode} $\ast$ {\em current\_\-tnode})}\label{tree_8c_a29be39c138fe7565f6b20455b8ba6ac}
+
+
+prints nodes of tree in ascending order \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em current\_\-tnode}]pointer to existing node \end{description}
+\end{Desc}

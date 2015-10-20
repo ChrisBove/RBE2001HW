@@ -1,0 +1,7 @@
+Employee:. Name = Harry Palmer, Salary = 50000
+Employee:. Name = Erik Grantby, Salary = 60000
+Employee:. Name = Test Guy, Salary = 23405
+Employee:. Name = Pointer Guy, Salary = 55555
+Employee2:. Name = John Cooper, Salary = 1234
+Employee2:. Name = The one with the really long name, Salary = 30000
+Employee2:. Name = Dilbert, Salary = 1234

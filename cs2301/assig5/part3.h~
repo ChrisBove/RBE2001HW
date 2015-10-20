@@ -1,0 +1,7 @@
+#ifndef PART3_H
+#define PART3_H
+
+int writeEmployeeLog(Employee2* array[], int length);
+void outputEmployee2Lines(FILE *stream, Employee2 *employee);
+
+#endif

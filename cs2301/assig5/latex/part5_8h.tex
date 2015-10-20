@@ -1,0 +1,33 @@
+\section{part5.h File Reference}
+\label{part5_8h}\index{part5.h@{part5.h}}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \bf{read\-Employee\-Log} (int index, char $\ast$name, int $\ast$salary)
+\item 
+int \bf{num\-Employees} ()
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{part5.h@{part5.h}!numEmployees@{numEmployees}}
+\index{numEmployees@{numEmployees}!part5.h@{part5.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int num\-Employees ()}\label{part5_8h_801748b5d2d028f0482ce56bb43d331c}
+
+
+Calculates number of employees in text file \begin{Desc}
+\item[Returns:]number of employees \end{Desc}
+\begin{Desc}
+\item[Note:]still uses fgets since that was only way to count lines \end{Desc}
+\index{part5.h@{part5.h}!readEmployeeLog@{readEmployeeLog}}
+\index{readEmployeeLog@{readEmployeeLog}!part5.h@{part5.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int read\-Employee\-Log (int {\em index}, char $\ast$ {\em name}, int $\ast$ {\em salary})}\label{part5_8h_6eba06bb925710329353f8f4bcfa3192}
+
+
+Reads 1 employee from a text file \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]of the employee number to retrieve \item[{\em name}]of employer to save to \item[{\em salary}]pointer to save information to \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int 1 if failed to read file, 0 if succeeded \end{Desc}

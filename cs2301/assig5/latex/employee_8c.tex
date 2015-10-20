@@ -1,0 +1,133 @@
+\section{employee.c File Reference}
+\label{employee_8c}\index{employee.c@{employee.c}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include \char`\"{}employee.h\char`\"{}}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$readline/readline.h$>$}\par
+{\tt \#include $<$readline/history.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \bf{output\-Employee\-Verbose} (FILE $\ast$stream, \bf{Employee} $\ast$employee)
+\item 
+void \bf{output\-Employee2Verbose} (FILE $\ast$stream, \bf{Employee2} $\ast$employee)
+\item 
+void \bf{print\-Employee\-Verbose} (\bf{Employee} $\ast$employee)
+\item 
+void \bf{print\-Employee2Verbose} (\bf{Employee2} $\ast$employee)
+\item 
+\bf{Employee} $\ast$ \bf{fillin\-Employee} (\bf{Employee} $\ast$emp, int salary, char $\ast$name)
+\item 
+\bf{Employee} $\ast$ \bf{create\-Employee} (int salary, char $\ast$name)
+\item 
+\bf{Employee2} $\ast$ \bf{create\-Employee2} (int salary, char $\ast$name)
+\item 
+\bf{Employee2} $\ast$ \bf{input\-Employee2} ()
+\item 
+\bf{Employee} $\ast$ \bf{input\-Employee} ()
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{employee.c@{employee.c}!createEmployee@{createEmployee}}
+\index{createEmployee@{createEmployee}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee}$\ast$ create\-Employee (int {\em salary}, char $\ast$ {\em name})}\label{employee_8c_eb7cb4c5c4779c2113e3daf270db2345}
+
+
+Allocates an Employee struct and fills in its fields. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em salary}]Annual salary in dollars \item[{\em name}]Character string holding the name. Gets copied into struct. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the newly-allocated struct. \end{Desc}
+\index{employee.c@{employee.c}!createEmployee2@{createEmployee2}}
+\index{createEmployee2@{createEmployee2}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee2}$\ast$ create\-Employee2 (int {\em salary}, char $\ast$ {\em name})}\label{employee_8c_a71e796ab3d70e452c5693e15f7d5f8a}
+
+
+Allocates an Employee2 struct and fills in its fields. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em salary}]Annual salary in dollars \item[{\em name}]Character string holding the name. Gets copied into struct. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the newly-allocated struct. \end{Desc}
+\index{employee.c@{employee.c}!fillinEmployee@{fillinEmployee}}
+\index{fillinEmployee@{fillinEmployee}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee}$\ast$ fillin\-Employee (\bf{Employee} $\ast$ {\em emp}, int {\em salary}, char $\ast$ {\em name})}\label{employee_8c_cff08fb0ab125ccc30b9aa63cef86f36}
+
+
+Fills in the fields of an Employee structure \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em emp}]Pointer to the struct. MUST ALREADY EXIST! \item[{\em salary}]Annual salary in dollars \item[{\em name}]Character string holding the name. Gets copied into struct. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the same struct \end{Desc}
+\index{employee.c@{employee.c}!inputEmployee@{inputEmployee}}
+\index{inputEmployee@{inputEmployee}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee}$\ast$ input\-Employee ()}\label{employee_8c_df7bcba34669423d7f8bdd8c8122ecd3}
+
+
+Prompts user to enter name and salary, inputs data to employee struct \begin{Desc}
+\item[Returns:]Pointer to new employee \end{Desc}
+\begin{Desc}
+\item[Note:]Checks if user actually input right data \end{Desc}
+\index{employee.c@{employee.c}!inputEmployee2@{inputEmployee2}}
+\index{inputEmployee2@{inputEmployee2}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Employee2}$\ast$ input\-Employee2 ()}\label{employee_8c_4bbd1151cc7051aa5bf412b4b7a75c85}
+
+
+Prompts user to enter name and salary, inputs data to employee2 struct \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em employee}]Pointer to the structure to save to \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to new employee \end{Desc}
+\begin{Desc}
+\item[Note:]Checks if user actually input right data \end{Desc}
+\index{employee.c@{employee.c}!outputEmployee2Verbose@{outputEmployee2Verbose}}
+\index{outputEmployee2Verbose@{outputEmployee2Verbose}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void output\-Employee2Verbose (FILE $\ast$ {\em stream}, \bf{Employee2} $\ast$ {\em employee})}\label{employee_8c_0e904654f127aeefbd9a1b8fa1913d68}
+
+
+Outputs one Employee2 structure in verbose form, to an open file stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]The output stream to write to (must already be open). \item[{\em employee}]Pointer to the structure to print \end{description}
+\end{Desc}
+\index{employee.c@{employee.c}!outputEmployeeVerbose@{outputEmployeeVerbose}}
+\index{outputEmployeeVerbose@{outputEmployeeVerbose}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void output\-Employee\-Verbose (FILE $\ast$ {\em stream}, \bf{Employee} $\ast$ {\em employee})}\label{employee_8c_724c7914065fffbb2da47f446b1227ea}
+
+
+Outputs one Employee structure in verbose form, to an open file stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]The output stream to write to (must already be open). \item[{\em employee}]Pointer to the structure to print \end{description}
+\end{Desc}
+\index{employee.c@{employee.c}!printEmployee2Verbose@{printEmployee2Verbose}}
+\index{printEmployee2Verbose@{printEmployee2Verbose}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void print\-Employee2Verbose (\bf{Employee2} $\ast$ {\em employee})}\label{employee_8c_ad83702fe144eb7a8c8626da8b0fdea1}
+
+
+Prints one Employee2 structure in verbose form \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em employee}]Pointer to the structure to print \end{description}
+\end{Desc}
+\index{employee.c@{employee.c}!printEmployeeVerbose@{printEmployeeVerbose}}
+\index{printEmployeeVerbose@{printEmployeeVerbose}!employee.c@{employee.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void print\-Employee\-Verbose (\bf{Employee} $\ast$ {\em employee})}\label{employee_8c_4d9da5be2623d2f7814ac0345dbe1733}
+
+
+Prints one Employee structure in verbose form \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em employee}]Pointer to the structure to print \end{description}
+\end{Desc}

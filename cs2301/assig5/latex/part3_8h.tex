@@ -1,0 +1,58 @@
+\section{part3.h File Reference}
+\label{part3_8h}\index{part3.h@{part3.h}}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \bf{write\-Employee\-Log} (\bf{Employee2} $\ast$array[$\,$], int length)
+\item 
+void \bf{output\-Employee2Lines} (FILE $\ast$stream, \bf{Employee2} $\ast$employee)
+\item 
+void \bf{free\-Employee\-Array} (\bf{Employee2} $\ast$array[$\,$], int length)
+\item 
+void \bf{free\-Employee} (\bf{Employee2} $\ast$employee)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{part3.h@{part3.h}!freeEmployee@{freeEmployee}}
+\index{freeEmployee@{freeEmployee}!part3.h@{part3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void free\-Employee (\bf{Employee2} $\ast$ {\em employee})}\label{part3_8h_281efe844097b8093f78ae38a89eb9cc}
+
+
+frees the employee, and all data in it \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em employee}]pointer to employee to free \end{description}
+\end{Desc}
+\index{part3.h@{part3.h}!freeEmployeeArray@{freeEmployeeArray}}
+\index{freeEmployeeArray@{freeEmployeeArray}!part3.h@{part3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void free\-Employee\-Array (\bf{Employee2} $\ast$ {\em array}[$\,$], int {\em length})}\label{part3_8h_d8ca09b05dde37253b6d3b2f70e740fb}
+
+
+frees the employee array, and all data in it \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em array}]of employee2 pointers \item[{\em length}]of array \end{description}
+\end{Desc}
+\index{part3.h@{part3.h}!outputEmployee2Lines@{outputEmployee2Lines}}
+\index{outputEmployee2Lines@{outputEmployee2Lines}!part3.h@{part3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void output\-Employee2Lines (FILE $\ast$ {\em stream}, \bf{Employee2} $\ast$ {\em employee})}\label{part3_8h_a4b7fa5d06b43755ad9541e6b381a090}
+
+
+Outputs one Employee2 structure in verbose form, to an open file stream uses one line for each data piece \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]The output stream to write to (must already be open). \item[{\em employee}]Pointer to the structure to print \end{description}
+\end{Desc}
+\index{part3.h@{part3.h}!writeEmployeeLog@{writeEmployeeLog}}
+\index{writeEmployeeLog@{writeEmployeeLog}!part3.h@{part3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int write\-Employee\-Log (\bf{Employee2} $\ast$ {\em array}[$\,$], int {\em length})}\label{part3_8h_9ba4906a5f403b8dc58afcc1af8303cd}
+
+
+Writes employees to a text file, each data on separate line \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em array}]of employee2 pointers \item[{\em length}]of array \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int 1 if failed to write file, 0 if succeeded \end{Desc}

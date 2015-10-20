@@ -1,0 +1,10 @@
+all:  num2
+
+num2: num2.o
+	gcc -g num2.o -o num2
+
+num2.o: num2.c
+	gcc -g -c num2.c
+
+clean:
+	rm -f  num2.o num2

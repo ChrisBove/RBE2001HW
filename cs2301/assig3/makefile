@@ -1,0 +1,18 @@
+all: assig3
+
+assig3: assig3.o sort.o
+	gcc -g assig3.o sort.o -o assig3
+
+assig3.o: assig3.c sort.h
+	gcc -g -c assig3.c
+
+sort.o: sort.c sort.h
+	gcc -g -c sort.c
+
+clean:
+	rm -f assig3.o sort.o assig3
+
+docs:
+	doxygen
+	chmod a+r html/*
+	cp -p html/* ~/public_html/cs2301/assig3

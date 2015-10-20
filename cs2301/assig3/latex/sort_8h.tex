@@ -1,0 +1,75 @@
+\section{sort.h File Reference}
+\label{sort_8h}\index{sort.h@{sort.h}}
+Header file for sorting functions for assignment 3. 
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int $\ast$ \bf{allocate\_\-array} (const char $\ast$argv[$\,$], int argc, int $\ast$num\_\-elems)
+\item 
+void \bf{fill\_\-array} (const char $\ast$argv[$\,$], int $\ast$new\_\-array, int $\ast$num\_\-elems)
+\item 
+void \bf{print\_\-array} (int $\ast$array, int num\_\-elements)
+\item 
+void \bf{sort\_\-array} (int $\ast$array, int num\_\-elements)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Header file for sorting functions for assignment 3. 
+
+\begin{Desc}
+\item[Author:]Christopher Bove (cpbove) \end{Desc}
+\begin{Desc}
+\item[Date:]6 April 2015 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{sort.h@{sort.h}!allocate_array@{allocate\_\-array}}
+\index{allocate_array@{allocate\_\-array}!sort.h@{sort.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ allocate\_\-array (const char $\ast$ {\em argv}[$\,$], int {\em argc}, int $\ast$ {\em num\_\-elems})}\label{sort_8h_305a5d36cdfe1ffeff2da8f46d3d5454}
+
+
+This function allocates an array of a sufficient size to store the numbers passed in argv[]. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em argv}]const char pointer to argv array from command line \item[{\em argc}]number of arguments on command line \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to base of array of numbers \end{Desc}
+\begin{Desc}
+\item[Note:]This does not check type of string on line. It is assumed to be int. \end{Desc}
+\index{sort.h@{sort.h}!fill_array@{fill\_\-array}}
+\index{fill_array@{fill\_\-array}!sort.h@{sort.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-array (const char $\ast$ {\em argv}[$\,$], int $\ast$ {\em new\_\-array}, int $\ast$ {\em num\_\-elems})}\label{sort_8h_710b7ff37ab6f6ab4ccce28c0f6b8c48}
+
+
+This function fills the elements of an array with that of argv \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em argv}]const char pointer to argv array from command line \item[{\em new\_\-array}]pointer to first element in array to be filled \item[{\em max\_\-elems}]number of maximum elements that can be placed in array \item[{\em argc}]number of arguments on command line \end{description}
+\end{Desc}
+\index{sort.h@{sort.h}!print_array@{print\_\-array}}
+\index{print_array@{print\_\-array}!sort.h@{sort.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void print\_\-array (int $\ast$ {\em array}, int {\em num\_\-elements})}\label{sort_8h_8d05914dfc431857377538709fc5d8a2}
+
+
+This function prints the elements of an array, one per line. This is modified from the example in Ciaraldi's Class 7 Example on slide 36 \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em array}]pointer to first element in array (base) \item[{\em num\_\-elements}]number of elements actually filled in the array \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]the highest index should be num\_\-elements-1 \end{Desc}
+\index{sort.h@{sort.h}!sort_array@{sort\_\-array}}
+\index{sort_array@{sort\_\-array}!sort.h@{sort.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void sort\_\-array (int $\ast$ {\em array}, int {\em num\_\-elements})}\label{sort_8h_8896f0ce55dd25259e2141e714d6ef93}
+
+
+This function sorts the elements of an array of ints from greatest to least This is modified from the example in Ciaraldi's Class 7 Example on slide 28 \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em array}]pointer to first element in array (base) \item[{\em num\_\-elements}]number of elements actually filled in the array \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]uses bubble sort algorithm developed by tcpong @ cs.ust.hk \end{Desc}

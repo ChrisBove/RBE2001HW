@@ -1,0 +1,92 @@
+\section{queue.c File Reference}
+\label{queue_8c}\index{queue.c@{queue.c}}
+C source code for queue creation and management functions. 
+
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include \char`\"{}queue.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\bf{Queue} $\ast$ \bf{create\_\-queue} (int max\_\-cells)
+\item 
+void \bf{delete\_\-queue} (\bf{Queue} $\ast$which\_\-queue)
+\item 
+int \bf{enqueue} (\bf{Queue} $\ast$which\_\-queue, void $\ast$ptr)
+\item 
+void $\ast$ \bf{dequeue} (\bf{Queue} $\ast$which\_\-queue)
+\item 
+void $\ast$ \bf{peek} (\bf{Queue} $\ast$which\_\-queue)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+C source code for queue creation and management functions. 
+
+\begin{Desc}
+\item[Author:]Christopher Bove (cpbove) \end{Desc}
+\begin{Desc}
+\item[Date:]27 April 2015 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{queue.c@{queue.c}!create_queue@{create\_\-queue}}
+\index{create_queue@{create\_\-queue}!queue.c@{queue.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{Queue}$\ast$ create\_\-queue (int {\em max\_\-cells})}\label{queue_8c_37f0ebf6bb3301f99bc42638a41ab12e}
+
+
+Create a queue by allocating a Queue structure, initializing it, and allocating memory to hold the stack entries. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em max\_\-cells}]Maximum entries in the queue \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to newly-allocated queue structure, NULL if error. \end{Desc}
+\index{queue.c@{queue.c}!delete_queue@{delete\_\-queue}}
+\index{delete_queue@{delete\_\-queue}!queue.c@{queue.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void delete\_\-queue (\bf{Queue} $\ast$ {\em which\_\-queue})}\label{queue_8c_b43c6f0104078cd018e97703f7b95ba7}
+
+
+Deletes a queue, including the structure and the memory for holding the queue entries, but not the entries themselves. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em which\_\-queue}]Pointer to Stack structure. \end{description}
+\end{Desc}
+\index{queue.c@{queue.c}!dequeue@{dequeue}}
+\index{dequeue@{dequeue}!queue.c@{queue.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ dequeue (\bf{Queue} $\ast$ {\em which\_\-queue})}\label{queue_8c_f8db386ebc4c0620589024d51d83f3b5}
+
+
+dequeues from front of queue, and returns that value. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em which\_\-queue}]Pointer to Queue you want to dequeue from. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Dequeued entry of queue \end{Desc}
+\index{queue.c@{queue.c}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!queue.c@{queue.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int enqueue (\bf{Queue} $\ast$ {\em which\_\-queue}, void $\ast$ {\em ptr})}\label{queue_8c_b5f34276406bb4ca11d16f5d4c608b33}
+
+
+Queues a pointer onto a Queue. when entry is added, tail pointer moves to right by 1, holds new value, cells count is increased, when tail is at end of array, we try to wrap around by checking status of base/head ptrs when queue is full, we return a -1 to indicate a failure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em which\_\-queue}]Pointer to queue you want to enqueue to. \item[{\em ptr}]Pointer to be queued. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if successful, -1 if not. \end{Desc}
+\index{queue.c@{queue.c}!peek@{peek}}
+\index{peek@{peek}!queue.c@{queue.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ peek (\bf{Queue} $\ast$ {\em which\_\-queue})}\label{queue_8c_16e4ef63ba66115658c75aa206c8977a}
+
+
+Peek at top of queue, without dequeueing \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em which\_\-queue}]Pointer to Queue you want to peek into \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Front entry of the Queue, NULL if queue is empty. \end{Desc}

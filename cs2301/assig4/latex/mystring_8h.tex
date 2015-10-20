@@ -1,0 +1,116 @@
+\section{mystring.h File Reference}
+\label{mystring_8h}\index{mystring.h@{mystring.h}}
+Custom versions of some of the C-style string functions. 
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+char $\ast$ \bf{mystrdup} (const char $\ast$src)
+\item 
+char $\ast$ \bf{mystrcpy} (char $\ast$dest, const char $\ast$src)
+\item 
+char $\ast$ \bf{mystrncpy} (char $\ast$dest, const char $\ast$src, int n)
+\item 
+char $\ast$ \bf{mystrcat} (char $\ast$dest, const char $\ast$src)
+\item 
+char $\ast$ \bf{mystrncat} (char $\ast$dest, const char $\ast$src, int n)
+\item 
+char $\ast$ \bf{mystrndup} (const char $\ast$src, int n)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Custom versions of some of the C-style string functions. 
+
+\begin{Desc}
+\item[Author:]Mike Ciaraldi 
+
+Christopher Bove - modified from Ciaraldi's original work \end{Desc}
+\begin{Desc}
+\item[Date:]4-13-15 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{mystring.h@{mystring.h}!mystrcat@{mystrcat}}
+\index{mystrcat@{mystrcat}!mystring.h@{mystring.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrcat (char $\ast$ {\em dest}, const char $\ast$ {\em src})}\label{mystring_8h_ebc286ca79fc1f0b7ca5d05066cd79a7}
+
+
+Duplicates the strcat function of C: appends the src string to the dest string, the terminator is overwritten on dest and terminator is then added. Strings cannot overlap. dest must be large enough for the operation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]pointer to string to have contents of src appended onto \item[{\em src}]Pointer to string to be appended \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the destination string dest \end{Desc}
+\index{mystring.h@{mystring.h}!mystrcpy@{mystrcpy}}
+\index{mystrcpy@{mystrcpy}!mystring.h@{mystring.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrcpy (char $\ast$ {\em dest}, const char $\ast$ {\em src})}\label{mystring_8h_515b2c58f31e99a4564e463ffbf73e2f}
+
+
+Duplicates the strcpy function of C: string pointed to by src is copied into array pointed to by dest. dest must be large enough to receive the copy. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]pointer to string to have contents of src copied into \item[{\em src}]Pointer to string to be copied \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the destination string dest \end{Desc}
+\begin{Desc}
+\item[Note:]copies src including null terminator character \end{Desc}
+\index{mystring.h@{mystring.h}!mystrdup@{mystrdup}}
+\index{mystrdup@{mystrdup}!mystring.h@{mystring.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrdup (const char $\ast$ {\em src})}\label{mystring_8h_148a52c665d88f52fb4995338a319d3c}
+
+
+Duplicates a C-style string. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em src}]Pointer to string to be copied \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to freshly-allocated string containing a duplicate of src or null if no memory is available \end{Desc}
+\index{mystring.h@{mystring.h}!mystrncat@{mystrncat}}
+\index{mystrncat@{mystrncat}!mystring.h@{mystring.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrncat (char $\ast$ {\em dest}, const char $\ast$ {\em src}, int {\em n})}\label{mystring_8h_5118ef3a602744c5ee61e5b366cb3a02}
+
+
+Duplicates the strncat function of C: appends the src string to the dest string, but only n characters of it the null terminator is overwritten on dest and null term. is then added. Strings cannot overlap. dest must be large enough for the operation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]pointer to string to have contents of src appended onto \item[{\em src}]Pointer to string to be appended \item[{\em n}]number of characters to duplicate \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the destination string dest \end{Desc}
+\index{mystring.h@{mystring.h}!mystrncpy@{mystrncpy}}
+\index{mystrncpy@{mystrncpy}!mystring.h@{mystring.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrncpy (char $\ast$ {\em dest}, const char $\ast$ {\em src}, int {\em n})}\label{mystring_8h_90a633351ed616644738f44135441ca9}
+
+
+Duplicates the strncpy function of C: string pointed to by src is copied into array pointed to by dest. dest must be large enough to receive the copy. Not more than n bytes are copied, so if no null terminator is in first n bytes, it is not copied. Also, if src length is less than n, remainder of dest is filled with nulls \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]pointer to string to have contents of src copied into \item[{\em src}]Pointer to string to be copied \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the destination string dest \end{Desc}
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em n}]number of bytes to copy from src into dest \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]copies src including null term. character \end{Desc}
+\index{mystring.h@{mystring.h}!mystrndup@{mystrndup}}
+\index{mystrndup@{mystrndup}!mystring.h@{mystring.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mystrndup (const char $\ast$ {\em src}, int {\em n})}\label{mystring_8h_4ed664b8f2f1131da7a773fa4fd7c708}
+
+
+Duplicates a C-style string, copying at most n characters, null terminator is added \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em src}]Pointer to string to be copied \item[{\em n}]number of characters to duplicate \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to freshly-allocated string containing a duplicate of src or null if no memory is available \end{Desc}
+\begin{Desc}
+\item[Note:]Modified from Ciaraldi's original mystrdup function \end{Desc}
